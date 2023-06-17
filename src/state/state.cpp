@@ -14,14 +14,70 @@
 
 enum chess_value{
 
-  king = 1000,
-  queen = 99,
-  bishop = 9,
-  knight =8,
-  rook = 7,
-  pawn  = 1
+  king = 400,
+  queen = 90,
+  bishop = 35,
+  knight = 33,
+  rook = 50,
+  pawn  = 10
 
 };
+
+int board_for_queen[BOARD_H][BOARD_W] = {
+  //white
+  {90, 90, 90, 90, 90},
+  {90, 91, 93, 91, 90},
+  {91, 95, 100, 95, 91},
+  {91, 95, 100, 95, 91},
+  {90, 90, 90, 90, 90},
+  {90, 91, 93, 91, 90}
+
+};
+
+int board_for_pawn[BOARD_H][BOARD_W] = {
+  //white
+  {10, 10, 10, 10, 10},
+  {10, 30, 30, 30, 20},
+  {20, 40, 50, 40, 20},
+  {20, 30, 30, 30, 20},
+  {10, 10, 10, 10, 10},
+  {10, 10, 10, 10, 10},
+
+};
+
+int board_for_bishop[BOARD_H][BOARD_W] = {
+  //white
+  {30, 30, 30, 30, 30},
+  {33, 43, 43, 43, 33},
+  {33, 53, 53, 53, 33},
+  {33, 43, 43, 43, 33},
+  {30, 40, 40, 40, 30},
+  {30, 30, 33, 30, 30},
+
+};
+
+int board_for_rook[BOARD_H][BOARD_W] = {
+  //white
+  {50, 52, 53, 52, 50},
+  {51, 53, 54, 53, 51},
+  {33, 53, 55, 53, 33},
+  {33, 53, 55, 53, 33},
+  {50, 52, 53, 52, 50},
+  {51, 53, 54, 53, 51}
+
+};
+
+int board_for_knight[BOARD_H][BOARD_W] = {
+  //white
+  {30, 30, 30, 30, 30},
+  {33, 43, 43, 43, 33},
+  {33, 53, 53, 53, 33},
+  {33, 43, 43, 43, 33},
+  {30, 40, 40, 40, 30},
+  {30, 30, 33, 30, 30},
+
+};
+
 
 int State::evaluate(){
   // [TODO] design your own evaluation function
@@ -35,19 +91,20 @@ int State::evaluate(){
           value_board += king;
         }
         else if(this->board.board[0][i][j] == 5){
-          value_board += queen;
+          value_board += board_for_queen[i][j];
         }
         else if(this->board.board[0][i][j] == 4){
-          value_board += bishop;
+          value_board += board_for_bishop[i][j];
         }
         else if(this->board.board[0][i][j] == 3){
-          value_board += knight;
+          value_board += board_for_knight[i][j];
         }
         else if(this->board.board[0][i][j] == 2){
-          value_board += rook;
+          value_board += board_for_rook[i][j];
         }
         else if(this->board.board[0][i][j] == 1){
-          value_board += pawn;
+          value_board += board_for_pawn[i][j];
+          
         }
       }
     }

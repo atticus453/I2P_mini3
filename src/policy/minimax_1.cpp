@@ -19,7 +19,7 @@ Move Minimax::get_move(State *state, int depth){
   
   auto actions = state->legal_actions;
   int val = 0;
-  Move our_next;
+  Move our_next = actions[0];
   if(state->player == 0){
     val = INT_MIN;
     for(unsigned long i=0; i<actions.size(); i++){
