@@ -11,9 +11,76 @@
  * 
  * @return int 
  */
+
+enum chess_value{
+
+  king = 1000,
+  queen = 99,
+  bishop = 9,
+  knight =8,
+  rook = 7,
+  pawn  = 1
+
+};
+
 int State::evaluate(){
   // [TODO] design your own evaluation function
-  return 0;
+  int value_board = 0;
+  
+
+    for(int i=0; i<BOARD_H; i++){
+      for(int j=0; j<BOARD_W; j++){
+        
+        if(this->board.board[0][i][j] == 6){
+          value_board += king;
+        }
+        else if(this->board.board[0][i][j] == 5){
+          value_board += queen;
+        }
+        else if(this->board.board[0][i][j] == 4){
+          value_board += bishop;
+        }
+        else if(this->board.board[0][i][j] == 3){
+          value_board += knight;
+        }
+        else if(this->board.board[0][i][j] == 2){
+          value_board += rook;
+        }
+        else if(this->board.board[0][i][j] == 1){
+          value_board += pawn;
+        }
+      }
+    }
+
+
+  
+
+    for(int i=0; i<BOARD_H; i++){
+      for(int j=0; j<BOARD_W; j++){
+        
+        if(this->board.board[1][i][j] == 6){
+          value_board -= king;
+        }
+        else if(this->board.board[1][i][j] == 5){
+          value_board -= queen;
+        }
+        else if(this->board.board[1][i][j] == 4){
+          value_board -= bishop;
+        }
+        else if(this->board.board[1][i][j] == 3){
+          value_board -= knight;
+        }
+        else if(this->board.board[1][i][j] == 2){
+          value_board -= rook;
+        }
+        else if(this->board.board[1][i][j] == 1){
+          value_board -= pawn;
+        }
+      }
+    }
+    
+
+  return value_board;
 }
 
 
